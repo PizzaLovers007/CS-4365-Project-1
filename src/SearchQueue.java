@@ -41,8 +41,14 @@ public abstract class SearchQueue {
         case "UCS":
             queue = new UCSSearchQueue(startState, useCost);
             break;
+        case "GS":
+            queue = new GSSearchQueue(startState, useCost);
+            break;
         case "A-star":
             queue = new AstarSearchQueue(startState, useCost);
+            break;
+        case "HCS":
+            queue = new HCSSearchQueue(startState, useCost);
             break;
         }
         return queue;
