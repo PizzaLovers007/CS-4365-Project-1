@@ -43,13 +43,13 @@ public class SASearchQueue extends SearchQueue
     public Node remove()
 	{
 		double temperature = 1000*Math.pow(0.995,timestep);
-		double E = next.getHeuristic()-curnode.getHeuristic();
 		if(list.size()==1)
 		{
 			return list.remove(0);
 		}
 		curnode = list.get(0);
 		Node next = list.get(1);
+        double E = next.getHeuristic()-curnode.getHeuristic();
 		if(E>0)
 		{
 			return list.remove(1);
@@ -57,7 +57,7 @@ public class SASearchQueue extends SearchQueue
 		else
 		{
 			Random rand = new Random();
-			if(Math.pow(2.71828,(E/temperature))>=rand.nextDouble())
+			if(Math.pow(Math.E,(E/temperature))>=rand.nextDouble())
 			{
 				return list.remove(1);
 			}

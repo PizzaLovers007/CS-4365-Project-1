@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -21,7 +20,7 @@ public class Driver {
     public ArrayList<Node> search(char[] startState, boolean useCost, String type) {
         SearchQueue queue = SearchQueue.createQueue(type, startState, useCost);
         if (queue == null) {
-            System.out.println("Search type argument was invalid.");
+            System.err.println("Search type argument was invalid.");
             System.exit(1);
         }
         while (!queue.isEmpty()) {
@@ -52,7 +51,7 @@ public class Driver {
 
     public static void main(String[] args) {
         if (args.length < 2 || args.length > 3) {
-            System.out.println("Incorrect number of arguments.");
+            System.err.println("Incorrect number of arguments.");
             System.exit(1);
         }
         String filename, searchType;
@@ -65,7 +64,7 @@ public class Driver {
             filename = args[2];
             searchType = args[1];
             if (!args[0].equals("-cost")) {
-                System.out.printf("Invalid flag: %s%n", args[0]);
+                System.err.printf("Invalid flag: %s%n", args[0]);
                 System.exit(1);
             }
             useCost = true;
@@ -75,7 +74,7 @@ public class Driver {
             char[] startState = in.nextLine().trim().toCharArray();
             new Driver().go(startState, useCost, searchType);
         } catch (FileNotFoundException e) {
-            System.out.printf("Could not find file: %s%n", filename);
+            System.err.printf("Could not find file: %s%n", filename);
             System.exit(1);
         }
 //        new Driver().go("WxBBW".toCharArray(), false, "SA");
