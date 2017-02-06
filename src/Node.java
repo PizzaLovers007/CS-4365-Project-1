@@ -6,13 +6,19 @@ import java.util.Arrays;
  */
 public class Node {
 
+    private boolean useCost;
     private char[] state;
-    private int moves;
+    private int steps;
+    private int move;
+    private int cost;
     private Node prev;
 
-    public Node(char[] st, int mov) {
-        state = st;
-        moves = mov;
+    public Node(char[] state, int steps, boolean useCost) {
+        this.state = state;
+        this.steps = steps;
+        this.move = -1;
+        this.cost = 0;
+        this.useCost = useCost;
     }
 
     public ArrayList<Node> successors() {
@@ -29,7 +35,9 @@ public class Node {
                 continue;
             }
             char[] nextState = Arrays.copyOf(state, state.length);
-            Node nextNode = new Node(nextState, moves+1);
+            Node nextNode = new Node(nextState, steps + 1, useCost);
+            nextNode.move = i;
+            nextNode.cost = Math.abs(i - emptySpace);
             nextNode.prev = this;
             list.add(nextNode);
         }
@@ -40,8 +48,16 @@ public class Node {
         return state;
     }
 
-    public int getMoves() {
-        return moves;
+    public int getSteps() {
+        return steps;
+    }
+
+    public int getMove() {
+        return move;
+    }
+
+    public int getCost() {
+        return cost;
     }
 
     public Node getPrev() {
@@ -66,5 +82,18 @@ public class Node {
             return true;
         }
         return false;
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        if (move == -1) {
+            sb.append(String.format("Step %d:  %s", steps, state));
+        } else {
+            sb.append(String.format("Step %d:  move %d %s", steps, move, state));
+        }
+        if (useCost) {
+            sb.append(String.format(" (c=%d)", cost));
+        }
+        return sb.toString();
     }
 }

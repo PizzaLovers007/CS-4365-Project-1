@@ -11,7 +11,7 @@ public class Driver {
     }
 
     public ArrayList<Node> search(char[] startState, boolean useCost, String type) {
-        SearchQueue queue = SearchQueue.getQueue(type, startState);
+        SearchQueue queue = SearchQueue.createQueue(type, startState, useCost);
         while (!queue.isEmpty()) {
             Node curr = queue.remove();
             if (queue.goalTest(curr)) {
