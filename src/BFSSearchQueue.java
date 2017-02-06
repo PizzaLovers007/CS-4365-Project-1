@@ -4,39 +4,40 @@ import java.util.LinkedList;
 
 /**
  * Created by Terrence Park and Skye Pekerti
+ * Queue used int he generic algorithm for a Breadth-First Search
  */
 public class BFSSearchQueue extends SearchQueue {
 
-    LinkedList<Node> queue;
-    HashSet<Node> visited;
+    LinkedList<Node> queue; //The queue of nodes that are the successors which need to be expanded
+    HashSet<Node> visited; //Set of nodes which are already visted to prevent revisiting states
 
-    public BFSSearchQueue(char[] startState, boolean useCost) {
+    public BFSSearchQueue(char[] startState, boolean useCost) { //Constructor of the queue for BFS
         queue = new LinkedList<>();
-        data = queue;
+        data = queue; //Gives the queue of nodes, only used for the isEmpty function
         visited = new HashSet<>();
-        Node start = new Node(startState, 0, useCost);
+        Node start = new Node(startState, 0, useCost); //Initialization of the start state
         queue.add(start);
     }
 
     @Override
-    public void insert(ArrayList<Node> successors) {
+    public void insert(ArrayList<Node> successors) { //Override of the insert method which inserts all the successors of the current node
         for (Node n : successors) {
             queue.add(n);
         }
     }
 
     @Override
-    public Node remove() {
+    public Node remove() { //Override of the remove method which removes the head of the queue
         return queue.remove();
     }
 
     @Override
-    public boolean didVisit(Node curr) {
+    public boolean didVisit(Node curr) { //Override of the didVisit method which returns the boolean if a node has been visited
         return visited.contains(curr);
     }
 
     @Override
-    public void visit(Node curr) {
+    public void visit(Node curr) { //Override of the visit method which visits a node
         visited.add(curr);
     }
 }

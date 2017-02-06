@@ -17,7 +17,7 @@ public class SASearchQueue extends SearchQueue
     public SASearchQueue(char[] startState, boolean useCost) //Constructor of the queue for SA
 	{
         list = new ArrayList<>();
-        data = list;
+        data = list; //Gives the list of nodes, only used for the isEmpty function
 		Node start = new Node(startState, 0, useCost); //Initialization of the start state
 		curnode = start;
 		timestep = 1;
