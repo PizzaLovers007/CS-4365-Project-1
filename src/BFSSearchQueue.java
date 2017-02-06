@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 /**
  * Created by Terrence Park and Skye Pekerti
- * Queue used int he generic algorithm for a Breadth-First Search
+ * Queue used in the generic algorithm for a Breadth-First Search
  */
 public class BFSSearchQueue extends SearchQueue {
 
