@@ -12,7 +12,7 @@ public class SASearchQueue extends SearchQueue
     ArrayList<Node> list;
 	int timestep;
 	Node curnode;
-
+	
     public SASearchQueue(char[] startState, boolean useCost)
 	{
         list = new ArrayList<>();
@@ -43,20 +43,21 @@ public class SASearchQueue extends SearchQueue
     public Node remove()
 	{
 		double temperature = 1000*Math.pow(0.995,timestep);
-		if(curnode==list.get(0)||temperature==0)
+		double E = next.getHeuristic()-curnode.getHeuristic();
+		if(list.size()==1)
 		{
 			return list.remove(0);
 		}
 		curnode = list.get(0);
 		Node next = list.get(1);
-		if(next.getHeuristic()-curnode.getHeuristic()>0)
+		if(E>0)
 		{
 			return list.remove(1);
 		}
 		else
 		{
 			Random rand = new Random();
-			if(temperature>=rand.nextInt(1000))
+			if(Math.pow(2.71828,(E/temperature))>=rand.nextDouble())
 			{
 				return list.remove(1);
 			}
