@@ -55,10 +55,29 @@ public class Driver {
             System.out.println("Incorrect number of arguments.");
             System.exit(1);
         }
+        String filename, searchType;
+        boolean useCost;
         if (args.length == 2) {
-
+            filename = args[1];
+            searchType = args[0];
+            useCost = false;
         } else {
-            
+            filename = args[2];
+            searchType = args[1];
+            if (!args[0].equals("-cost")) {
+                System.out.printf("Invalid flag: %s%n", args[0]);
+                System.exit(1);
+            }
+            useCost = true;
         }
+        try {
+            Scanner in = new Scanner(new File(filename));
+            char[] startState = in.nextLine().trim().toCharArray();
+            new Driver().go(startState, useCost, searchType);
+        } catch (FileNotFoundException e) {
+            System.out.printf("Could not find file: %s%n", filename);
+            System.exit(1);
+        }
+//        new Driver().go("WxBBW".toCharArray(), false, "SA");
     }
 }

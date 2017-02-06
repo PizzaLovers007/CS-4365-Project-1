@@ -24,7 +24,7 @@ public class SASearchQueue extends SearchQueue
     }
 
     @Override
-    public void insert(Collection<Node> successors)
+    public void insert(ArrayList<Node> successors)
 	{
 		Node bestnode = null;
 		list.clear();
@@ -39,7 +39,7 @@ public class SASearchQueue extends SearchQueue
 		timestep++;
     }
 
-    @Override
+	@Override
     public Node remove()
 	{
 		double temperature = 1000*Math.pow(0.995,timestep);
@@ -64,4 +64,13 @@ public class SASearchQueue extends SearchQueue
 		}
 		return list.remove(0);
     }
+
+	@Override
+	public boolean didVisit(Node curr) {
+		return false;
+	}
+
+	@Override
+	public void visit(Node curr) {
+	}
 }

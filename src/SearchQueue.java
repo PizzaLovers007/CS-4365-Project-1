@@ -55,6 +55,9 @@ public abstract class SearchQueue {
         case "HCS":
             queue = new HCSSearchQueue(startState, useCost);
             break;
+        case "SA":
+            queue = new SASearchQueue(startState, useCost);
+            break;
         }
         return queue;
     }
