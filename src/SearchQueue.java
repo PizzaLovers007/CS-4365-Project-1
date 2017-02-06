@@ -30,13 +30,15 @@ public abstract class SearchQueue {
     }
 
     public static SearchQueue createQueue(String type, char[] startState, boolean useCost) {
-        SearchQueue queue;
+        SearchQueue queue = null;
         switch (type) {
         case "DFS":
             queue = new DFSSearchQueue(startState, useCost);
-            return queue;
-        default:
-            return null;
+            break;
+        case "UCS":
+            queue = new UCSSearchQueue(startState, useCost);
+            break;
         }
+        return queue;
     }
 }

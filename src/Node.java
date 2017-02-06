@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * Created by Terrence Park and Skye Pekerti
@@ -42,6 +43,24 @@ public class Node {
             list.add(nextNode);
         }
         return list;
+    }
+
+    public int getHeuristic() {
+        int numBlack = 0;
+        for (char c : state) {
+            if (c == 'B') {
+                numBlack++;
+            }
+        }
+        int outOfPlace = 0;
+        for (int i = 0; i < state.length; i++) {
+            if (i < numBlack && state[i] != 'B'
+                    || i == numBlack && state[i] != ' '
+                    || i > numBlack && state[i] != 'W') {
+                outOfPlace++;
+            }
+        }
+        return outOfPlace;
     }
 
     public char[] getState() {
