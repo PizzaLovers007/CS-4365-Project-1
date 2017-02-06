@@ -11,7 +11,7 @@ public class GSSearchQueue extends SearchQueue {
     HashSet<Node> visited;
 
     public GSSearchQueue(char[] startState, boolean useCost) {
-        queue = new PriorityQueue<>((one, two) -> one.getHeuristic() - two.getHeuristic());;
+        queue = new PriorityQueue<>((one, two) -> one.getHeuristic() - two.getHeuristic());
         data = queue;
         visited = new HashSet<>();
         Node start = new Node(startState, 0, useCost);
