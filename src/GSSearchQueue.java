@@ -1,4 +1,5 @@
-import java.util.Collection;
+
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.PriorityQueue;
 
@@ -19,16 +20,24 @@ public class GSSearchQueue extends SearchQueue {
     }
 
     @Override
-    public void insert(Collection<Node> successors) {
+    public void insert(ArrayList<Node> successors) {
         for (Node n : successors) {
-            if (!visited.contains(n)) {
-                queue.add(n);
-            }
+            queue.add(n);
         }
     }
 
     @Override
     public Node remove() {
         return queue.remove();
+    }
+
+    @Override
+    public boolean didVisit(Node curr) {
+        return visited.contains(curr);
+    }
+
+    @Override
+    public void visit(Node curr) {
+        visited.add(curr);
     }
 }

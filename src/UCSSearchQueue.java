@@ -1,4 +1,4 @@
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.PriorityQueue;
 
@@ -11,7 +11,12 @@ public class UCSSearchQueue extends SearchQueue {
     HashSet<Node> visited;
 
     public UCSSearchQueue(char[] startState, boolean useCost) {
-        queue = new PriorityQueue<>((one, two) -> one.getSteps() - two.getSteps());
+        queue = new PriorityQueue<>((one, two) -> {
+            if (one.getPathCost() == two.getPathCost()) {
+                return one.getPriority() - two.getPriority();
+            }
+            return one.getPathCost() - two.getPathCost();
+        });
         data = queue;
         visited = new HashSet<>();
         Node start = new Node(startState, 0, useCost);
@@ -19,16 +24,24 @@ public class UCSSearchQueue extends SearchQueue {
     }
 
     @Override
-    public void insert(Collection<Node> successors) {
+    public void insert(ArrayList<Node> successors) {
         for (Node n : successors) {
-            if (!visited.contains(n)) {
-                queue.add(n);
-            }
+            queue.add(n);
         }
     }
 
     @Override
     public Node remove() {
         return queue.remove();
+    }
+
+    @Override
+    public boolean didVisit(Node curr) {
+        return visited.contains(curr);
+    }
+
+    @Override
+    public void visit(Node curr) {
+        visited.add(curr);
     }
 }

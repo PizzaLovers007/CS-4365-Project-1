@@ -6,11 +6,15 @@ import java.util.Arrays;
  */
 public class Node {
 
+    private static int nextPriority = 0;
+
     private boolean useCost;
     private char[] state;
     private int steps;
     private int move;
     private int cost;
+    private int pathCost;
+    private int priority;
     private Node prev;
 
     public Node(char[] state, int steps, boolean useCost) {
@@ -19,6 +23,8 @@ public class Node {
         this.move = -1;
         this.cost = 0;
         this.useCost = useCost;
+        this.pathCost = 0;
+        this.priority = nextPriority++;
     }
 
     public ArrayList<Node> successors() {
@@ -35,9 +41,12 @@ public class Node {
                 continue;
             }
             char[] nextState = Arrays.copyOf(state, state.length);
+            nextState[emptySpace] = nextState[i];
+            nextState[i] = 'x';
             Node nextNode = new Node(nextState, steps + 1, useCost);
             nextNode.move = i;
             nextNode.cost = Math.abs(i - emptySpace);
+            nextNode.pathCost = nextNode.cost + pathCost;
             nextNode.prev = this;
             list.add(nextNode);
         }
@@ -53,9 +62,9 @@ public class Node {
         }
         int outOfPlace = 0;
         for (int i = 0; i < state.length; i++) {
-            if (i < numBlack && state[i] != 'B'
-                    || i == numBlack && state[i] != ' '
-                    || i > numBlack && state[i] != 'W') {
+            if (i < numBlack && state[i] == 'W'
+                    || i == numBlack && state[i] != 'x'
+                    || i > numBlack && state[i] == 'B') {
                 outOfPlace++;
             }
         }
@@ -66,16 +75,15 @@ public class Node {
         return state;
     }
 
-    public int getSteps() {
+    public int getPathCost() {
+        if (useCost) {
+            return pathCost;
+        }
         return steps;
     }
 
-    public int getMove() {
-        return move;
-    }
-
-    public int getCost() {
-        return cost;
+    public int getPriority() {
+        return priority;
     }
 
     public Node getPrev() {
@@ -105,11 +113,11 @@ public class Node {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         if (move == -1) {
-            sb.append(String.format("Step %d:  %s", steps, state));
+            sb.append(String.format("%s", new String(state)));
         } else {
-            sb.append(String.format("Step %d:  move %d %s", steps, move, state));
+            sb.append(String.format("Step %d: move %d %s", steps-1, move, new String(state)));
         }
-        if (useCost) {
+        if (useCost && cost > 0) {
             sb.append(String.format(" (c=%d)", cost));
         }
         return sb.toString();

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -7,9 +8,13 @@ public abstract class SearchQueue {
 
     Collection<Node> data;
 
-    public abstract void insert(Collection<Node> successors);
+    public abstract void insert(ArrayList<Node> successors);
 
     public abstract Node remove();
+
+    public abstract boolean didVisit(Node curr);
+
+    public abstract void visit(Node curr);
 
     public boolean goalTest(Node curr) {
         char[] state = curr.getState();
@@ -18,7 +23,7 @@ public abstract class SearchQueue {
             if (c == 'B' && seenSpace || c == 'W' && !seenSpace) {
                 return false;
             }
-            if (c == ' ') {
+            if (c == 'x') {
                 seenSpace = true;
             }
         }

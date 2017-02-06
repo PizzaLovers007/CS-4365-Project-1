@@ -1,4 +1,4 @@
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 /**
@@ -18,7 +18,7 @@ public class HCSSearchQueue extends SearchQueue {
     }
 
     @Override
-    public void insert(Collection<Node> successors) {
+    public void insert(ArrayList<Node> successors) {
         queue.clear();
         if (iteration < 10000) {
             queue.addAll(successors);
@@ -29,5 +29,14 @@ public class HCSSearchQueue extends SearchQueue {
     public Node remove() {
         iteration++;
         return queue.remove();
+    }
+
+    @Override
+    public boolean didVisit(Node curr) {
+        return false;
+    }
+
+    @Override
+    public void visit(Node curr) {
     }
 }
