@@ -35,8 +35,14 @@ public abstract class SearchQueue {
         case "DFS":
             queue = new DFSSearchQueue(startState, useCost);
             break;
+        case "BFS":
+            queue = new BFSSearchQueue(startState, useCost);
+            break;
         case "UCS":
             queue = new UCSSearchQueue(startState, useCost);
+            break;
+        case "A-star":
+            queue = new AstarSearchQueue(startState, useCost);
             break;
         }
         return queue;

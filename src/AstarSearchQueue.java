@@ -4,12 +4,12 @@ import java.util.PriorityQueue;
 /**
  * Created by Terrence Park and Skye Pekerti
  */
-public class UCSSearchQueue extends SearchQueue {
+public class AstarSearchQueue extends SearchQueue {
 
     PriorityQueue<Node> queue;
 
-    public UCSSearchQueue(char[] startState, boolean useCost) {
-        queue = new PriorityQueue<>((one, two) -> one.getSteps() - two.getSteps());
+    public AstarSearchQueue(char[] startState, boolean useCost) {
+        queue = new PriorityQueue<>((one, two) -> one.getSteps()+one.getHeuristic() - (two.getSteps()+two.getHeuristic()));
         data = queue;
         Node start = new Node(startState, 0, useCost);
         queue.add(start);
