@@ -14,7 +14,7 @@ public class SASearchQueue extends SearchQueue
 	int timestep; //Current time of the simulation for the SA algorithm
 	Node curnode; //Keeps track of the current node if the next node is not chosen
 	
-    public SASearchQueue(char[] startState, boolean useCost) //Constructor of the queue for SA
+    public SASearchQueue(char[] startState, boolean useCost) //Constructor of the search queue for SA
 	{
         list = new ArrayList<>();
         data = list; //Gives the list of nodes, only used for the isEmpty function
