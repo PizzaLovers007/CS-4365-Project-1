@@ -44,6 +44,10 @@ public class Node {
         return moves;
     }
 
+    public Node getPrev() {
+        return prev;
+    }
+
     public int hashCode() {
         return new String(state).hashCode();
     }

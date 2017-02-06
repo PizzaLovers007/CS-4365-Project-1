@@ -5,9 +5,21 @@ import java.util.Collection;
  */
 public abstract class SearchQueue {
 
-    Collection data;
+    Collection<Node> data;
 
     public abstract Node getNext();
 
-    public abstract boolean goalTest();
+    public abstract boolean goalTest(Node curr);
+
+    public abstract void insert(Collection<Node> successors);
+
+    public abstract Node remove();
+
+    public boolean isEmpty() {
+        return data.isEmpty();
+    }
+
+    public static SearchQueue getQueue(String type, char[] startState) {
+        return null;
+    }
 }
