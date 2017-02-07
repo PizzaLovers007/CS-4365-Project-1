@@ -15,7 +15,7 @@ public class DFSSearchQueue extends SearchQueue {
         queue = new Stack<>();
         data = queue;
         visited = new HashSet<>();
-        Node start = new Node(startState, 0, useCost);
+        Node start = new Node(startState, useCost);
         queue.push(start);
     }
 

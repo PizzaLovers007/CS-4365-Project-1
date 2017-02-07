@@ -18,7 +18,7 @@ public class SASearchQueue extends SearchQueue
 	{
         list = new ArrayList<>();
         data = list; //Gives the list of nodes, only used for the isEmpty function
-		Node start = new Node(startState, 0, useCost); //Initialization of the start state
+		Node start = new Node(startState, useCost); //Initialization of the start state
 		curnode = start;
 		timestep = 1;
 		list.add(start);

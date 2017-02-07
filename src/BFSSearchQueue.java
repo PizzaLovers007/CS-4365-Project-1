@@ -15,7 +15,7 @@ public class BFSSearchQueue extends SearchQueue {
         queue = new LinkedList<>();
         data = queue; //Gives the queue of nodes, only used for the isEmpty function
         visited = new HashSet<>();
-        Node start = new Node(startState, 0, useCost); //Initialization of the start state
+        Node start = new Node(startState, useCost); //Initialization of the start state
         queue.add(start);
     }
 
