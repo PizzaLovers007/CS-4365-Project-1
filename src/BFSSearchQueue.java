@@ -11,7 +11,7 @@ public class BFSSearchQueue extends SearchQueue {
     LinkedList<Node> queue; //The queue of nodes that are the successors which need to be expanded
     HashSet<Node> visited; //Set of nodes which are already visted to prevent revisiting states
 
-    public BFSSearchQueue(char[] startState, boolean useCost) { //Constructor of the queue for BFS
+    public BFSSearchQueue(char[] startState, boolean useCost) { //Constructor of the search queue for BFS
         queue = new LinkedList<>();
         data = queue; //Gives the queue of nodes, only used for the isEmpty function
         visited = new HashSet<>();
@@ -20,14 +20,14 @@ public class BFSSearchQueue extends SearchQueue {
     }
 
     @Override
-    public void insert(ArrayList<Node> successors) { //Override of the insert method which inserts all the successors of the current node
+    public void insert(ArrayList<Node> successors) { //Override of the insert method which inserts all the successors of the current node to the queue
         for (Node n : successors) {
             queue.add(n);
         }
     }
 
     @Override
-    public Node remove() { //Override of the remove method which removes the head of the queue
+    public Node remove() { //Override of the remove method which removes and returns the head of the queue
         return queue.remove();
     }
 
@@ -37,7 +37,7 @@ public class BFSSearchQueue extends SearchQueue {
     }
 
     @Override
-    public void visit(Node curr) { //Override of the visit method which visits a node
+    public void visit(Node curr) { //Override of the visit method which sets a node as visited
         visited.add(curr);
     }
 }
