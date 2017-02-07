@@ -9,14 +9,18 @@ import java.util.PriorityQueue;
 public class AstarSearchQueue extends SearchQueue {
 
     PriorityQueue<Node> queue; //The priority queue of nodes that are the successors which need to be expanded
-    HashSet<Node> visited; //Set of nodes which are already visted to prevent revisiting states
+    HashSet<Node> visited; //Set of nodes which are already visited to prevent revisiting states
 
     public AstarSearchQueue(char[] startState, boolean useCost) { //Constructor of the search queue for A*
         queue = new PriorityQueue<>((one, two) -> { //Use of lambda to set the comparing of nodes for the priority queue
-            if (one.getPathCost()+one.getHeuristic() == two.getPathCost()+two.getHeuristic()) { //Checks to see if the path costs + heuristic of nodes one and two are equal, used as the tiebreaker if their path costs + heuristics are the same
+            //Checks to see if the path costs + heuristic of nodes one and two are equal, used as the
+            //tiebreaker if their path costs + heuristics are the same
+            if (one.getPathCost()+one.getHeuristic() == two.getPathCost()+two.getHeuristic()) {
                 return one.getPriority() - two.getPriority();
             }
-            return one.getPathCost()+one.getHeuristic() - (two.getPathCost()+two.getHeuristic()); //Return the value of the path cost + heuristic to see which node has a higher priority in terms of their path cost plus heuristic. value>0 = one, value<0 = two
+            //Return the value of the path cost + heuristic to see which node has a higher priority
+            //in terms of their path cost plus heuristic. value>0 = one, value<0 = two
+            return one.getPathCost()+one.getHeuristic() - (two.getPathCost()+two.getHeuristic());
         });
         data = queue; //Gives the stack of nodes, only used for the isEmpty function
         visited = new HashSet<>();

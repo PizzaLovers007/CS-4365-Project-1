@@ -9,7 +9,7 @@ import java.util.LinkedList;
 public class BFSSearchQueue extends SearchQueue {
 
     LinkedList<Node> queue; //The queue of nodes that are the successors which need to be expanded
-    HashSet<Node> visited; //Set of nodes which are already visted to prevent revisiting states
+    HashSet<Node> visited; //Set of nodes which are already visited to prevent revisiting states
 
     public BFSSearchQueue(char[] startState, boolean useCost) { //Constructor of the search queue for BFS
         queue = new LinkedList<>();

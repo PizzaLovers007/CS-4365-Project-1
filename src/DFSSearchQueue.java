@@ -10,7 +10,7 @@ import java.util.Stack;
 public class DFSSearchQueue extends SearchQueue {
 
     Stack<Node> queue; //The stack of nodes that are the successors which need to be expanded
-    HashSet<Node> visited; //Set of nodes which are already visted to prevent revisiting states
+    HashSet<Node> visited; //Set of nodes which are already visited to prevent revisiting states
 
     public DFSSearchQueue(char[] startState, boolean useCost) { //Constructor of the search queue for DFS
         queue = new Stack<>();

@@ -29,7 +29,7 @@ public class SASearchQueue extends SearchQueue
 	{
 		Node bestnode = null; //Keeps track of the best node under the heuristic
 		list.clear(); //Clears the list so no previous successors stay in the list
-		for (Node n : successors) //Loop which runs through each of the nodes n in sucessors to find the best one
+		for (Node n : successors) //Loop which runs through each of the nodes n in successors to find the best one
 		{
 			if(bestnode == null || n.getHeuristic() < bestnode.getHeuristic()) //Determines if n in successors is better than the one in bestnode
 			{

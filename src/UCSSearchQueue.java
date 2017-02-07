@@ -9,7 +9,7 @@ import java.util.PriorityQueue;
 public class UCSSearchQueue extends SearchQueue {
 
     PriorityQueue<Node> queue; //The priority queue of nodes that are the successors which need to be expanded
-    HashSet<Node> visited; //Set of nodes which are already visted to prevent revisiting states
+    HashSet<Node> visited; //Set of nodes which are already visited to prevent revisiting states
 
     public UCSSearchQueue(char[] startState, boolean useCost) { //Constructor of the search queue for UCS
         queue = new PriorityQueue<>((one, two) -> { //Use of lambda to set the comparing of nodes for the priority queue
