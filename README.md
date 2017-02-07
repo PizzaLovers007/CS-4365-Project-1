@@ -26,8 +26,7 @@ Windows/MacOS
 --------------------
 Problems Encountered
 --------------------
-We had some problems thinking of a way to implement the algorithm without creating a different fucntion for each of the searches.
-There were some issues we had regarding the local searches 
+No problems encountered.
 
 -------------------
 Running the Program
