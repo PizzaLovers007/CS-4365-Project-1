@@ -33,8 +33,8 @@ public abstract class SearchQueue {
     public abstract boolean didVisit(Node curr);
 
     /**
-     * Marks state {@code curr} as expanded. This should do nothing in local
-     * searches.
+     * Marks state {@code curr} as expanded. This should only print out the
+     * state in local searches.
      * @param curr the state to mark
      */
     public abstract void visit(Node curr);

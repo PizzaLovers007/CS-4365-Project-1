@@ -17,12 +17,29 @@ public class Driver {
      * @param type the search type
      */
     public void go(char[] startState, boolean useCost, String type) {
+        //Print iteration header if local search HCS
+        if (type.equals("HCS")) {
+            System.out.println(new String(startState));
+        }
+
         //Get the path from the search algorithm
         ArrayList<Node> path = search(startState, useCost, type);
 
-        //Print the path
-        for (Node n : path) {
-            System.out.println(n);
+        //Print final result header if local search
+        if (type.equals("HCS") || type.equals("SA")) {
+            System.out.println();
+            System.out.printf("Final Result For %s:%n", type);
+        }
+
+        //Check if the path is 10000+, this should only be the case if HCS
+        //or SA fail to find a solution
+        if (path.size() >= 10000) {
+            System.out.println("No solution could be found");
+        } else {
+            //Print the path
+            for (Node n : path) {
+                System.out.println(n);
+            }
         }
     }
 

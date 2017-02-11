@@ -39,6 +39,12 @@ public class SASearchQueue extends SearchQueue
 		list.add(curnode); //Adds the current node to list
 		list.add(bestnode); //Adds the next node to list
 		timestep++; //Increment timestep for the SA algorithm
+
+		double temperature = 1000*Math.pow(0.995,timestep);
+		if (temperature < 1E-23) //Check to see if the temperature is "zero", meaning the search is over
+		{
+			list.clear(); //Clears the list, stopping the search
+		}
     }
 
 	@Override
@@ -74,7 +80,8 @@ public class SASearchQueue extends SearchQueue
 	}
 
 	@Override
-	public void visit(Node curr) //Override of the visit function but unused for SA
+	public void visit(Node curr)
 	{
+		System.out.println(new String(curr.getState()));
 	}
 }
