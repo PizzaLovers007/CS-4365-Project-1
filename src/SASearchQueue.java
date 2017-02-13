@@ -82,6 +82,6 @@ public class SASearchQueue extends SearchQueue
 	@Override
 	public void visit(Node curr)
 	{
-		System.out.println(new String(curr.getState()));
+		System.out.println(new String(curr.getState())); //Print current iteration
 	}
 }

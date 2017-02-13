@@ -48,6 +48,7 @@ public class HCSSearchQueue extends SearchQueue {
 
     @Override
     public void visit(Node curr) {
+        //Print current iteration
         System.out.printf("Iteration %d: %s%n", iteration, new String(curr.getState()));
     }
 }

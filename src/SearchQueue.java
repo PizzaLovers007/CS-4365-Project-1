@@ -34,7 +34,7 @@ public abstract class SearchQueue {
 
     /**
      * Marks state {@code curr} as expanded. This should only print out the
-     * state in local searches.
+     * current state in local searches.
      * @param curr the state to mark
      */
     public abstract void visit(Node curr);
