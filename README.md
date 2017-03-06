@@ -1,4 +1,4 @@
-# CS 4384.HON Project 1
+# CS 4365.HON Project 1
 
 ## Group member names
 
